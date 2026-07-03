@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+html {
+  font-family: var(--font-anek-bangla), sans-serif;
+}
+
+body {
+  @apply bg-gray-100 text-gray-900 min-h-full flex flex-col;
+}

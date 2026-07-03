@@ -1,0 +1,128 @@
+'use client'
+
+import React, { useState, useEffect } from 'react'
+import { Droplet, Menu, X, MapPin, ChevronRight } from 'lucide-react'
+import navLogo from "../images/logo.png"
+const navLinks = [
+  { label: 'হোম', href: '/' },
+  { label: 'ডোনার খুঁজুন', href: '/donors' },
+  { label: 'সম্পর্কে', href: '/about' },
+  { label: 'যোগাযোগ', href: '/contact' },
+]
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
+  return (
+    <header
+      className={`sticky top-0 z-50 w-full ${
+        scrolled
+          ? 'bg-white/75 backdrop-blur-xl shadow-[0_4px_24px_-8px_rgba(190,18,60,0.15)] border-b border-rose-100/80'
+          : 'bg-white/40 backdrop-blur-md border-b border-transparent'
+      }`}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        {/* Logo */}
+        <a href="/" className="flex items-center gap-3 shrink-0">
+          <img className='w-10' src={navLogo.src} alt="Logo" />
+          <div className="flex flex-col leading-tight">
+            <span className="text-[15px] font-bold text-slate-900 sm:text-base">
+              ইসাক রক্তবন্ধন
+            </span>
+            <span className="text-[11px] font-medium tracking-wide text-rose-600">
+              বাংলাদেশ
+            </span>
+          </div>
+        </a>
+
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-1 lg:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-rose-700"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Right side */}
+        <div className="hidden items-center gap-3 lg:flex">
+          <a
+            href="/donate"
+            className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-rose-600 to-red-700 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-rose-600/25"
+          >
+            <Droplet className="h-4 w-4" fill="white" />
+            রক্ত দিন
+          </a>
+        </div>
+
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setIsOpen((v) => !v)}
+          className="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-100 bg-white/70 text-slate-700 backdrop-blur-md lg:hidden"
+          aria-label={isOpen ? 'মেনু বন্ধ করুন' : 'মেনু খুলুন'}
+        >
+          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="border-t border-rose-100/80 bg-white/90 backdrop-blur-xl lg:hidden">
+          <div className="flex flex-col gap-1 px-4 py-4">
+            <div className="mb-2 flex items-center gap-1.5 self-start rounded-full border border-rose-100 bg-rose-50/80 px-3 py-1.5">
+              <span className="h-2 w-2 rounded-full bg-rose-600" />
+              <span className="text-xs font-semibold text-rose-700">৩টি জরুরি অনুরোধ</span>
+            </div>
+
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-between rounded-lg px-3 py-3 text-sm font-medium text-slate-700 hover:bg-rose-50 hover:text-rose-700"
+              >
+                {link.label}
+                <ChevronRight className="h-4 w-4 text-slate-400" />
+              </a>
+            ))}
+
+            <a
+              href="/donate"
+              onClick={() => setIsOpen(false)}
+              className="mt-3 flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-rose-600 to-red-700 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-rose-600/25"
+            >
+              <Droplet className="h-4 w-4" fill="white" />
+              রক্ত দিন
+            </a>
+
+            <div className="mt-2 flex items-center gap-1.5 px-3 text-xs text-slate-400">
+              <MapPin className="h-3.5 w-3.5" />
+              রাজশাহী বিভাগ, বাংলাদেশ
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
+  )
+}
+
+export default Navbar

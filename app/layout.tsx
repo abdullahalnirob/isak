@@ -1,0 +1,44 @@
+import type { Metadata } from "next";
+import { Anek_Bangla, Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+const anekBangla = Anek_Bangla({
+  variable: "--font-anek-bangla",
+  subsets: ["bengali", "latin"],
+});
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "ইসাক রক্তবন্ধন বাংলাদেশ",
+  description: "একটি অলাভজনক ও মানবিক উদ্যোগ। আসুন রক্তদানে এগিয়ে আসি।",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${anekBangla.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">
+        <Navbar />
+        <div className="flex-1">{children}</div>
+        <Footer />
+      </body>
+    </html>
+  );
+}
