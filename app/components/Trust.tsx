@@ -1,51 +1,41 @@
-import { Heart, Droplet, Users, Clock } from "lucide-react";
+import { Droplet, TestTube, Heart } from "lucide-react";
 
 const stats = [
   {
     icon: Droplet,
-    value: "৫,০০০+",
-    label: "ইউনিট রক্ত সংগৃহীত",
+    value: "১০+",
+    label: "ব্যাগ রক্ত",
+  },
+  {
+    icon: TestTube,
+    value: "২৩০+",
+    label: "টেস্ট সম্পন্ন",
   },
   {
     icon: Heart,
-    value: "৪,৫০০+",
-    label: "জীবন বাঁচানো হয়েছে",
-  },
-  {
-    icon: Users,
-    value: "৩,০০০+",
-    label: "নিবন্ধিত রক্তদাতা",
-  },
-  {
-    icon: Clock,
-    value: "২৪/৭",
-    label: "জরুরি সেবা প্রদান",
+    value: "১০০+",
+    label: "রক্ত দিতে আগ্রহী",
   },
 ];
 
 const Trust = () => {
   return (
-    <section className="bg-white py-16 px-10">
-      <div className="mx-auto max-w-5xl text-center">
-        <h2 className="text-2xl font-bold text-gray-900">আমাদের বিশ্বাস</h2>
-        <p className="mt-3 text-gray-600">
-          আমরা বিশ্বাস করি প্রতিটি রক্তদান একটি নতুন জীবনের সূচনা।
-        </p>
-      </div>
-
-      <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-8 md:grid-cols-4">
-        {stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="flex flex-col items-center rounded-2xl bg-rose-50 p-6 text-center"
-          >
-            <stat.icon className="mb-3 h-8 w-8 text-rose-600" />
-            <span className="text-3xl font-bold text-gray-900">
-              {stat.value}
-            </span>
-            <span className="mt-1 text-sm text-gray-600">{stat.label}</span>
-          </div>
-        ))}
+    <section className="bg-white px-4 py-16 sm:px-6 sm:py-20">
+      <div className="mx-auto max-w-5xl">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="flex flex-col items-center rounded-2xl bg-rose-50 p-6 text-center"
+            >
+              <stat.icon className="mb-3 h-8 w-8 text-rose-600" />
+              <span className="text-3xl font-bold text-gray-900">
+                {stat.value}
+              </span>
+              <span className="mt-1 text-sm text-gray-600">{stat.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

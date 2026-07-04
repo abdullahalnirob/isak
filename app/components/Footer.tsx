@@ -85,6 +85,8 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} ইসাক রক্তবন্ধন বাংলাদেশ। সর্বস্বত্ব
           সংরক্ষিত।
         </p>
+        <br />
+        <p>Developed by <a target="_blank" href="https://www.facebook.com/dev.abdullahalnirob" className="text-rose-400 hover:text-rose-300 transition-colors underline">Abdullah Al Nirob</a></p>
       </div>
     </footer>
   );

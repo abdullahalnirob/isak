@@ -1,25 +1,47 @@
-import { MapPin, Heart, Users, Shield, Clock } from "lucide-react";
+import {
+  Users,
+  Droplet,
+  Heart,
+  Stethoscope,
+  Siren,
+  Building2,
+} from "lucide-react";
 
-const values = [
+const activities = [
   {
-    icon: Heart,
-    title: "মানবিক সেবা",
-    desc: "আমরা সম্পূর্ণ অলাভজনকভাবে মানুষের পাশে দাঁড়িয়ে আছি।",
+    icon: Droplet,
+    title: "ফ্রি ব্লাড গ্রুপিং ক্যাম্পেইন",
+    desc: "বিনামূল্যে রক্তের গ্রুপ নির্ণয়ের মাধ্যমে জনসচেতনতা বৃদ্ধি।",
+    color: "from-rose-500 to-red-600",
+    shadow: "shadow-rose-500/30",
   },
   {
     icon: Users,
-    title: "স্বেচ্ছাসেবী নেটওয়ার্ক",
-    desc: "হাজার হাজার স্বেচ্ছাসেবী রক্তদাতা আমাদের সাথে যুক্ত।",
+    title: "স্বেচ্ছা রক্তদাতা ডাটাবেজ",
+    desc: "সারা দেশের রক্তদাতাদের তথ্য সংরক্ষণ ও নিয়মিত হালনাগাদ করে জরুরি প্রয়োজনে দ্রুত ডোনার খুঁজে দেওয়া।",
+    color: "from-blue-500 to-indigo-600",
+    shadow: "shadow-blue-500/30",
   },
   {
-    icon: Shield,
-    title: "নিরাপদ রক্ত সরবরাহ",
-    desc: "সকল রক্ত সংগ্রহ ও বিতরণ নিরাপত্তার মানদণ্ড অনুসরণ করে।",
+    icon: Stethoscope,
+    title: "রোগী সহায়তা",
+    desc: "হাসপাতালভিত্তিক ডোনার ম্যানেজমেন্ট, রক্ত সংগ্রহে সহযোগিতা এবং রোগীর স্বজনদের সার্বিক সহায়তা।",
+    color: "from-emerald-500 to-teal-600",
+    shadow: "shadow-emerald-500/30",
   },
   {
-    icon: Clock,
-    title: "দ্রুত সেবা",
-    desc: "জরুরি প্রয়োজনে দ্রুততম সময়ে রক্ত সরবরাহ করি।",
+    icon: Siren,
+    title: "জরুরি রক্তসেবা",
+    desc: "জীবন-মরণ পরিস্থিতিতে দ্রুত রক্তদাতা ও রোগীর মধ্যে সংযোগ স্থাপন।",
+    color: "from-orange-500 to-amber-600",
+    shadow: "shadow-orange-500/30",
+  },
+  {
+    icon: Building2,
+    title: "ভবিষ্যৎ পরিকল্পনা",
+    desc: "একটি আধুনিক ও নির্ভরযোগ্য ব্লাড ব্যাংক প্রতিষ্ঠার মাধ্যমে আরও বিস্তৃত মানবিক সেবা প্রদান, ইনশাআল্লাহ।",
+    color: "from-purple-500 to-violet-600",
+    shadow: "shadow-purple-500/30",
   },
 ];
 
@@ -27,108 +49,112 @@ const About = () => {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-rose-50 via-white to-red-50 px-10 py-20">
-        <div className="mx-auto max-w-5xl">
-          <h1 className="text-4xl font-bold text-gray-900">আমাদের সম্পর্কে</h1>
-          <p className="mt-4 max-w-2xl text-lg text-gray-600 leading-relaxed">
-            &lsquo;ইসাক রক্তবন্ধন বাংলাদেশ&rsquo; একটি অলাভজনক ও মানবিক
-            উদ্যোগ। আমরা রক্তদানের প্রতি সচেতনতা বৃদ্ধি এবং জরুরি সময়ে
-            রক্তের ব্যবস্থা নিশ্চিত করার জন্য নিবেদিত।
+      <section className="relative overflow-hidden bg-gradient-to-br from-rose-50 via-white to-red-50 px-4 py-20 sm:px-6 sm:py-28">
+        <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-rose-200/30 blur-3xl" />
+        <div className="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-red-200/30 blur-3xl" />
+        <div className="relative mx-auto max-w-5xl text-center">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-500 to-red-600 shadow-lg shadow-rose-500/30">
+            <Heart className="h-8 w-8 text-white" />
+          </div>
+          <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl lg:text-5xl">
+            আমাদের সম্পর্কে
+          </h1>
+          <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            <span className="font-semibold text-slate-800">
+              ইসাক রক্তবন্ধন বাংলাদেশ
+            </span>{" "}
+            একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী মানবিক সংগঠন। আমাদের লক্ষ্য
+            হলো জরুরি মুহূর্তে নিরাপদ রক্তের ব্যবস্থা নিশ্চিত করে অসহায়
+            রোগীদের পাশে দাঁড়ানো এবং স্বেচ্ছায় রক্তদানের সংস্কৃতি সারা দেশে
+            ছড়িয়ে দেওয়া।
           </p>
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="px-10 py-16">
+      {/* Activities */}
+      <section className="bg-white px-4 py-16 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-2xl font-bold text-gray-900">আমাদের লক্ষ্য</h2>
-          <p className="mt-4 text-gray-600 leading-relaxed">
-            প্রতিটি জীবন মূল্যবান। আমাদের লক্ষ্য হলো একটি এমন সমাজ গড়ে তোলা
-            যেখানে কেউ রক্তের অভাবে কষ্ট পাবে না। আমরা স্বেচ্ছাসেবী
-            রক্তদাতাদের সাথে প্রয়োজনীয় ব্যক্তিদের সংযুক্ত করি, রক্তদানের
-            প্রতি সচেতনতা সৃষ্টি করি এবং একটি সুশৃঙ্খল রক্ত ব্যাংক পরিচালনা
-            করি। আপনার সহযোগিতাই আমাদের শক্তি।
-          </p>
-        </div>
-      </section>
+          <div className="text-center">
+            <span className="inline-block rounded-full bg-rose-100 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-rose-600">
+              আমাদের কার্যক্রম
+            </span>
+            <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl">
+              আমরা যা করি
+            </h2>
+          </div>
 
-      {/* Values */}
-      <section className="bg-gray-50 px-10 py-16">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-2xl font-bold text-gray-900">
-            আমাদের মূল্যবোধ
-          </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map((v) => (
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {activities.map((act) => (
               <div
-                key={v.title}
-                className="rounded-2xl bg-white p-6 shadow-sm"
+                key={act.title}
+                className="group relative rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition-all hover:border-rose-200 hover:shadow-lg hover:shadow-rose-900/5"
               >
-                <v.icon className="h-8 w-8 text-rose-600" />
-                <h3 className="mt-4 font-bold text-gray-900">{v.title}</h3>
-                <p className="mt-2 text-sm text-gray-600">{v.desc}</p>
+                <div
+                  className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${act.color} shadow-md ${act.shadow}`}
+                >
+                  <act.icon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="mt-4 text-[15px] font-semibold text-slate-900">
+                  {act.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                  {act.desc}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Location */}
-      <section className="px-10 py-16">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="text-2xl font-bold text-gray-900">
-            আমাদের অবস্থান
+      {/* Belief / Quote */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-rose-600 to-red-700 px-4 py-16 sm:px-6 sm:py-20">
+        <div className="absolute left-0 top-0 h-full w-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iLjA1Ij48cGF0aCBkPSJNMzYgMzRhMiAyIDAgMSAxLTQgMCAyIDIgMCAwIDEgNCAwIi8+PC9nPjwvZz48L3N2Zz4=')] opacity-40" />
+        <div className="relative mx-auto max-w-4xl text-center">
+          <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+            <Heart className="h-7 w-7 text-white" />
+          </div>
+          <p className="text-lg font-medium leading-relaxed text-white/90 sm:text-xl">
+            আমরা বিশ্বাস করি,
+            <span className="block mt-2 text-2xl font-bold text-white sm:text-3xl">
+              মানবতার সেবাই সর্বোত্তম সেবা
+            </span>
+          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+            আপনার স্বেচ্ছায় দেওয়া এক ব্যাগ রক্ত একজন মানুষের জীবন বাঁচাতে
+            পারে, একটি পরিবারে ফিরিয়ে আনতে পারে হাসি।
+          </p>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-gradient-to-br from-rose-50 via-white to-red-50 px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+            আসুন, যুক্ত হই
           </h2>
-          <div className="mt-8 flex flex-col gap-8 lg:flex-row">
-            <div className="flex-1 space-y-4">
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-1 h-5 w-5 shrink-0 text-rose-600" />
-                <div>
-                  <p className="font-semibold text-gray-900">প্রধান কার্যালয়</p>
-                  <p className="text-gray-600">
-                    আমদিঘী, বগুড়া
-                    <br />
-                    রাজশাহী বিভাগ, বাংলাদেশ
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Clock className="mt-1 h-5 w-5 shrink-0 text-rose-600" />
-                <div>
-                  <p className="font-semibold text-gray-900">সেবা সময়</p>
-                  <p className="text-gray-600">
-                    সকাল ৮:০০ — রাত ১০:০০
-                    <br />
-                    জরুরি সেবা: ২৪/৭
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Users className="mt-1 h-5 w-5 shrink-0 text-rose-600" />
-                <div>
-                  <p className="font-semibold text-gray-900">যোগাযোগ</p>
-                  <p className="text-gray-600">
-                    ফোন: +880 1XXX-XXXXXX
-                    <br />
-                    ইমেইল: info@isakbondhon.org
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="flex-1 overflow-hidden rounded-2xl border border-gray-200">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57949.01579086579!2d89.00092953693381!3d24.801839375734424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fc66cdcebca9d1%3A0x63eb5f95745494f1!2sAdamdighi!5e0!3m2!1sen!2sbd!4v1783096777865!5m2!1sen!2sbd"
-                width="100%"
-                height="350"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
+            মানবতার এই মহৎ উদ্যোগে আমাদের সঙ্গে যুক্ত হই। এক ফোঁটা
+            রক্ত—একটি নতুন জীবনের আশা।
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href="/donors"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-rose-600 to-red-600 px-8 py-3.5 text-[15px] font-semibold text-white shadow-lg shadow-rose-600/25 transition-all hover:from-rose-700 hover:to-red-700 hover:shadow-xl hover:shadow-rose-600/30"
+            >
+              <Users className="h-5 w-5" />
+              রক্তদাতা খুঁজুন
+            </a>
+            <a
+              href="/donate"
+              className="inline-flex items-center gap-2 rounded-full border border-rose-200 bg-white px-8 py-3.5 text-[15px] font-semibold text-rose-600 transition-colors hover:bg-rose-50"
+            >
+              <Droplet className="h-5 w-5" />
+              রক্তদান করুন
+            </a>
           </div>
         </div>
       </section>
+
     </main>
   );
 };
