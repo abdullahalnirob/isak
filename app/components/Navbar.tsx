@@ -88,11 +88,6 @@ const Navbar = () => {
       {isOpen && (
         <div className="border-t border-rose-100/80 bg-white/90 backdrop-blur-xl lg:hidden">
           <div className="flex flex-col gap-1 px-4 py-4">
-            <div className="mb-2 flex items-center gap-1.5 self-start rounded-full border border-rose-100 bg-rose-50/80 px-3 py-1.5">
-              <span className="h-2 w-2 rounded-full bg-rose-600" />
-              <span className="text-xs font-semibold text-rose-700">৩টি জরুরি অনুরোধ</span>
-            </div>
-
             {navLinks.map((link) => (
               <a
                 key={link.href}
