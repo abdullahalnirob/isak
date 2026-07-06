@@ -46,7 +46,7 @@ const Navbar = () => {
   }, [isOpen])
 
   const handleLogout = async () => {
-    await signOut(auth)
+    if (auth) await signOut(auth)
     localStorage.removeItem('user_image')
     localStorage.removeItem('user_name')
     localStorage.removeItem('user_email')

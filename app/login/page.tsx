@@ -22,6 +22,7 @@ const Login = () => {
   const { user, loading } = useAuth()
 
   const handleGoogleLogin = async () => {
+    if (!auth || !googleProvider) return
     try {
       const result = await signInWithPopup(auth, googleProvider)
       const u = result.user
