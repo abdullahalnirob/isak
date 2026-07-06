@@ -18,9 +18,10 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [userImage, setUserImage] = useState('')
-  const [userName, setUserName] = useState('')
   const { user, loading } = useAuth()
+
+  const userImage = user?.photoURL || (!loading ? (typeof window !== 'undefined' ? localStorage.getItem('user_image') || '' : '') : '')
+  const userName = user?.displayName || (!loading ? (typeof window !== 'undefined' ? localStorage.getItem('user_name') || '' : '') : '')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -31,16 +32,11 @@ const Navbar = () => {
 
   useEffect(() => {
     if (user) {
-      setUserImage(user.photoURL || '')
-      setUserName(user.displayName || '')
       localStorage.setItem('user_image', user.photoURL || '')
       localStorage.setItem('user_name', user.displayName || '')
       localStorage.setItem('user_email', user.email || '')
-    } else if (!loading) {
-      setUserImage(localStorage.getItem('user_image') || '')
-      setUserName(localStorage.getItem('user_name') || '')
     }
-  }, [user, loading])
+  }, [user])
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : ''
@@ -54,8 +50,7 @@ const Navbar = () => {
     localStorage.removeItem('user_image')
     localStorage.removeItem('user_name')
     localStorage.removeItem('user_email')
-    setUserImage('')
-    setUserName('')
+    window.location.reload()
   }
 
   const isLoggedIn = !loading && (user || userImage)
