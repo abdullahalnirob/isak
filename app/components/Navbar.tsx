@@ -5,7 +5,7 @@ import { Droplet, Menu, X, MapPin, ChevronRight, LogOut, Heart } from 'lucide-re
 import navLogo from "../images/logo.png"
 import { useAuth } from '@/lib/AuthContext'
 import { signOut } from 'firebase/auth'
-import { auth } from '@/lib/firebase'
+import { getAuthInstance } from '@/lib/firebase'
 import Link from 'next/link'
 
 const navLinks = [
@@ -46,6 +46,7 @@ const Navbar = () => {
   }, [isOpen])
 
   const handleLogout = async () => {
+    const auth = getAuthInstance()
     if (auth) await signOut(auth)
     localStorage.removeItem('user_image')
     localStorage.removeItem('user_name')

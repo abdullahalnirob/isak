@@ -4,7 +4,7 @@ import React from 'react'
 import { useRouter } from 'next/navigation'
 import { Droplet } from 'lucide-react'
 import { signInWithPopup } from 'firebase/auth'
-import { auth, googleProvider } from '@/lib/firebase'
+import { getAuthInstance, getGoogleProviderInstance } from '@/lib/firebase'
 import { useAuth } from '@/lib/AuthContext'
 import Link from 'next/link'
 
@@ -22,6 +22,8 @@ const Login = () => {
   const { user, loading } = useAuth()
 
   const handleGoogleLogin = async () => {
+    const auth = getAuthInstance()
+    const googleProvider = getGoogleProviderInstance()
     if (!auth || !googleProvider) return
     try {
       const result = await signInWithPopup(auth, googleProvider)

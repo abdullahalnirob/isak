@@ -11,13 +11,19 @@ const firebaseConfig = {
 };
 
 let app: FirebaseApp | undefined;
-let auth: Auth | undefined;
-let googleProvider: GoogleAuthProvider | undefined;
+let authInstance: Auth | undefined;
+let googleProviderInstance: GoogleAuthProvider | undefined;
 
 if (firebaseConfig.apiKey) {
   app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
-  auth = getAuth(app);
-  googleProvider = new GoogleAuthProvider();
+  authInstance = getAuth(app);
+  googleProviderInstance = new GoogleAuthProvider();
 }
 
-export { app, auth, googleProvider };
+export function getAuthInstance(): Auth | undefined {
+  return authInstance;
+}
+
+export function getGoogleProviderInstance(): GoogleAuthProvider | undefined {
+  return googleProviderInstance;
+}
