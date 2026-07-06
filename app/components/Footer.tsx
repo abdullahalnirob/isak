@@ -1,6 +1,7 @@
 import { Droplet, MapPin, Phone, Mail } from "lucide-react";
 import navLogo from "../images/logo.png";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -26,24 +27,29 @@ const Footer = () => {
           <h3 className="mb-3 font-semibold text-white">দ্রুত লিংক</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <a href="/" className="hover:text-white transition-colors">
+              <Link href="/" className="hover:text-white transition-colors">
                 হোম
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/about" className="hover:text-white transition-colors">
+              <Link href="/about" className="hover:text-white transition-colors">
                 সম্পর্কে
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/donors" className="hover:text-white transition-colors">
+              <Link href="/donate" className="hover:text-white transition-colors">
+                রক্ত দিন
+              </Link>
+            </li>
+            <li>
+              <Link href="/donors" className="hover:text-white transition-colors">
                 ডোনার খুঁজুন
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/contact" className="hover:text-white transition-colors">
+              <Link href="/contact" className="hover:text-white transition-colors">
                 যোগাযোগ
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

@@ -1,6 +1,7 @@
 'use client'
 
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import Link from "next/link"
 
 const contactInfo = [
   {
@@ -45,6 +46,12 @@ const Contact = () => {
             জরুরি রক্তের প্রয়োজন হলে বা যেকোনো তথ্যের জন্য আমাদের সাথে
             যোগাযোগ করুন।
           </p>
+          <Link
+            href="/donate"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-rose-600 to-red-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-rose-600/20 transition-all hover:from-rose-700 hover:to-red-700"
+          >
+            রক্ত দিন
+          </Link>
         </div>
       </section>
 

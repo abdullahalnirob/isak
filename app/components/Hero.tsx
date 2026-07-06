@@ -1,4 +1,5 @@
 import Slider from "./Slider";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -21,12 +22,12 @@ const Hero = () => {
           </div>
 
           <div className="flex flex-wrap gap-4 pt-2">
-            <button className="rounded-full bg-rose-600 px-8 py-3.5 text-[15px] font-semibold text-white shadow-md shadow-rose-600/25 transition-colors hover:bg-rose-700">
+            <Link href="/donate" className="rounded-full bg-rose-600 px-8 py-3.5 text-[15px] font-semibold text-white shadow-md shadow-rose-600/25 transition-colors hover:bg-rose-700">
               রক্তদাতা হন
-            </button>
-            <button className="rounded-full border border-rose-200 bg-white px-8 py-3.5 text-[15px] font-semibold text-rose-600 transition-colors hover:bg-rose-50">
+            </Link>
+            <Link href="/about" className="rounded-full border border-rose-200 bg-white px-8 py-3.5 text-[15px] font-semibold text-rose-600 transition-colors hover:bg-rose-50">
               আরও জানুন
-            </button>
+            </Link>
           </div>
         </div>
 

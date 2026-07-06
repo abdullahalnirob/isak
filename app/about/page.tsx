@@ -6,6 +6,7 @@ import {
   Siren,
   Building2,
 } from "lucide-react";
+import Link from "next/link";
 
 const activities = [
   {
@@ -137,20 +138,20 @@ const About = () => {
             রক্ত—একটি নতুন জীবনের আশা।
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
+            <Link
               href="/donors"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-rose-600 to-red-600 px-8 py-3.5 text-[15px] font-semibold text-white shadow-lg shadow-rose-600/25 transition-all hover:from-rose-700 hover:to-red-700 hover:shadow-xl hover:shadow-rose-600/30"
             >
               <Users className="h-5 w-5" />
               রক্তদাতা খুঁজুন
-            </a>
-            <a
+            </Link>
+            <Link
               href="/donate"
               className="inline-flex items-center gap-2 rounded-full border border-rose-200 bg-white px-8 py-3.5 text-[15px] font-semibold text-rose-600 transition-colors hover:bg-rose-50"
             >
               <Droplet className="h-5 w-5" />
               রক্তদান করুন
-            </a>
+            </Link>
           </div>
         </div>
       </section>
