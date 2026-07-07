@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Droplet, CheckCircle } from 'lucide-react'
 import { useAuth } from '@/lib/AuthContext'
@@ -21,6 +21,12 @@ const DonateBlood = () => {
   const [agreed, setAgreed] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login')
+    }
+  }, [loading, user, router])
+
   if (loading) {
     return (
       <main className="flex min-h-[80vh] items-center justify-center">
@@ -29,10 +35,7 @@ const DonateBlood = () => {
     )
   }
 
-  if (!user) {
-    router.push('/login')
-    return null
-  }
+  if (!user) return null
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
