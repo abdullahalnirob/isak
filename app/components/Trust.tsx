@@ -3,7 +3,7 @@ import { Droplet, TestTube, Heart } from "lucide-react";
 const stats = [
   {
     icon: Droplet,
-    value: "১০+",
+    value: "১৮+",
     label: "ব্যাগ রক্ত",
   },
   {

@@ -13,14 +13,15 @@ const DonateBlood = () => {
   const router = useRouter()
   const { user, loading } = useAuth()
   const [form, setForm] = useState({
+    name: '',
     group: '',
     phone: '',
     location: '',
     date: new Date().toISOString().split('T')[0],
   })
   const [agreed, setAgreed] = useState(false)
+  const [sendImage, setSendImage] = useState(false)
   const [submitted, setSubmitted] = useState(false)
-
   useEffect(() => {
     if (!loading && !user) {
       router.push('/login')
@@ -43,12 +44,21 @@ const DonateBlood = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const name = localStorage.getItem('user_name') || ''
+    const storedName = localStorage.getItem('user_name') || ''
     const email = localStorage.getItem('user_email') || ''
-    const profile_image = localStorage.getItem('user_image') || ''
+    const profileImage = localStorage.getItem('user_image') || ''
+    const name = form.name.trim() || storedName
+
+    let imageUrl: string
+    if (sendImage) {
+      imageUrl = profileImage
+    } else {
+      const firstLetter = name.charAt(0).toUpperCase() || '?'
+      imageUrl = `https://ui-avatars.com/api/?name=${firstLetter}&background=e11d48&color=fff`
+    }
 
     const payload = {
-      profile_image,
+      profile_image: imageUrl,
       name,
       email,
       group: form.group,
@@ -93,7 +103,7 @@ const DonateBlood = () => {
             আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।
           </p>
           <button
-            onClick={() => { setSubmitted(false); setForm({ group: '', phone: '', location: '', date: new Date().toISOString().split('T')[0] }) }}
+            onClick={() => { setSubmitted(false); setForm({ name: '', group: '', phone: '', location: '', date: new Date().toISOString().split('T')[0] }) }}
             className="mt-6 rounded-full bg-gradient-to-r from-rose-600 to-red-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-rose-600/20 transition-all hover:from-rose-700 hover:to-red-700"
           >
             আবার আবেদন করুন
@@ -117,6 +127,18 @@ const DonateBlood = () => {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="mt-8 space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div>
+            <label className="text-sm font-medium text-slate-700">নাম <span className="text-xs text-slate-400">(ঐচ্ছিক)</span></label>
+            <input
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              placeholder="আপনার নাম"
+              className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-rose-300 focus:bg-white focus:ring-2 focus:ring-rose-100"
+            />
+          </div>
+
           <div>
             <label className="text-sm font-medium text-slate-700">রক্তের গ্রুপ</label>
             <select
@@ -169,6 +191,17 @@ const DonateBlood = () => {
               className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 outline-none transition-colors focus:border-rose-300 focus:bg-white focus:ring-2 focus:ring-rose-100"
             />
           </div>
+
+          <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 transition-colors hover:bg-slate-50">
+            <input
+              type="checkbox"
+              checked={sendImage}
+              onChange={(e) => setSendImage(e.target.checked)}
+              className="h-4 w-4 rounded border-slate-300 text-rose-600 focus:ring-rose-500"
+            />
+            <span className="text-sm text-slate-700">আমি আমার প্রোফাইল ছবি শেয়ার করতে চাই
+            </span>
+          </label>
 
           <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 transition-colors hover:bg-slate-50">
             <input
